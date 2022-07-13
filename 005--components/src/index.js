@@ -60,4 +60,20 @@ function RenderButton() {
   );
 }
 
-root.render(<RenderButton />);
+// const heading = React.createElement(
+//   'h1',
+//   {},
+//   'Text'
+// )
+// => Children Props
+
+function Heading(props = {}) {
+  console.log(props);
+  return (
+    <h1>
+      Props.children is {props.children}
+    </h1>
+  )
+}
+
+root.render(<Heading>Text</Heading>);
