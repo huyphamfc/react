@@ -1,15 +1,14 @@
 import React from "react";
 
 function Course({
-    courses =
-    [{ title: 'None', instructor: 'None' }]
+    title = 'None',
+    instructor = 'None'
 }) {
-    return courses.map(
-        ({ title, instructor }) => (
-            <React.Fragment key={Math.random()}>
-                <h2>{title}</h2>
-                <p>{instructor}</p>
-            </React.Fragment>)
+    return (
+        <React.Fragment>
+            <h2>{title}</h2>
+            <p>{instructor}</p>
+        </React.Fragment>
     )
 }
 

@@ -13,26 +13,24 @@ const obj = {
   content: "Comment Testing",
 };
 
-const courseRecord = {
-  courses: [
-    {
-      title: "Build Response Real-World Websites with HTML and CSS",
-      instructor: "Jonas Schmedtmann"
-    },
-    {
-      title: "JavaScript from Zero to Hero",
-      instructor: "Jonas Schmedtmann"
-    },
-    {
-      title: "The Web Developer Bootcamp",
-      instructor: "Colt Steele"
-    },
-    {
-      title: "React - The Complete Guide",
-      instructor: "Huy Pham"
-    }
-  ]
-}
+const coursesRecord = [
+  {
+    title: "Build Response Real-World Websites with HTML and CSS",
+    instructor: "Jonas Schmedtmann"
+  },
+  {
+    title: "JavaScript from Zero to Hero",
+    instructor: "Jonas Schmedtmann"
+  },
+  {
+    title: "The Web Developer Bootcamp",
+    instructor: "Colt Steele"
+  },
+  {
+    title: "React - The Complete Guide",
+    instructor: "Huy Pham"
+  }
+];
 
 const comments = (
   <div>
@@ -47,7 +45,16 @@ const comments = (
 
 const courses = (
   <div>
-    <Course {...courseRecord} />
+    {
+      coursesRecord.map(
+        (obj, index) => (
+          <Course
+            key={index}
+            {...obj}
+          />
+        )
+      )
+    }
   </div>
 )
 
