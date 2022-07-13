@@ -1,14 +1,18 @@
 import ExpenseItem from './ExpenseItem';
+import Card from './Card';
 import './Expenses.css';
 
 function Expenses({ expensesRecord }) {
-    const expenses = expensesRecord.map(obj =>
-        <ExpenseItem {...obj} />);
+    const expenses = expensesRecord.map((obj, index) =>
+        <ExpenseItem
+            key={index}
+            {...obj}
+        />);
 
     return (
-        <div className='expenses'>
+        <Card className='expenses'>
             {expenses}
-        </div>
+        </Card>
     );
 }
 
