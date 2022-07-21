@@ -20,6 +20,11 @@ function Component() {
     const [title, setTitle] = useState('');
     const [posts, setPosts] = useState([]);
     const [tab, setTab] = useState('posts');
+    const [showGoToTop, setShowGoToTop] = useState(false);
+
+    const scrollHandler = () => {
+        setShowGoToTop(window.scrollY > 400);
+    }
 
     useEffect(
         () => {
@@ -28,6 +33,16 @@ function Component() {
                 .then(data => setPosts(data));
         },
         [tab]
+    );
+
+    useEffect(
+        () => {
+            window.addEventListener('scroll', scrollHandler);
+            return () => {
+                window.removeEventListener('scroll', scrollHandler);
+            }
+        },
+        []
     );
 
     return (
@@ -68,6 +83,20 @@ function Component() {
                     )
                 }
             </ul>
+            {
+                showGoToTop &&
+                <button
+                    style={
+                        {
+                            position: 'fixed',
+                            bottom: '20px',
+                            right: '20px'
+                        }
+                    }
+                >
+                    Go To Top
+                </button>
+            }
         </div>
     );
 }
