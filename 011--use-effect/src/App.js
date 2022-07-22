@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Countdown from "./Countdown";
+import Count from "./Count";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -11,7 +11,7 @@ function App() {
       >
         Toggle
       </button>
-      {show && <Countdown />}
+      {show && <Count />}
     </div>
   );
 }
