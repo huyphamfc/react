@@ -24,9 +24,13 @@ function App() {
     }
   ];
 
+  const addExpenseHandler = expense => {
+
+  }
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expensesRecord={expensesRecord} />
     </div>
   );
