@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Avatar from "./Avatar";
+import Count from "./Count";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -11,7 +11,7 @@ function App() {
       >
         Toggle
       </button>
-      {show && <Avatar />}
+      {show && <Count />}
     </div>
   );
 }

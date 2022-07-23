@@ -2,16 +2,14 @@
     The cleanup is called before the callback was called
 */
 
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 function Count() {
     const [count, setCount] = useState(1);
 
-    useEffect(
+    useLayoutEffect(
         () => {
-            console.log(`Mount/Render ${count} time(s)`);
-
-            return () => console.log(`Cleanup ${count} time(s)`);
+            if (count > 3) setCount(0);
         },
         [count]
     );
