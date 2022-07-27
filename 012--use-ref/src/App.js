@@ -3,13 +3,18 @@ useRef() is used to store a mutable value of the previous render
 */
 
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 
 function App() {
   const [count, setCount] = useState(60);
 
   const timerID = useRef();
+  const prevCount = useRef();
+
+  useEffect(() => {
+    prevCount.current = count;
+  }, [count]);
 
   const startHandler = () => {
     timerID.current = setInterval(() => {
@@ -20,6 +25,8 @@ function App() {
   const stopHandler = () => {
     clearInterval(timerID.current);
   }
+
+  console.log(prevCount.current, count);
 
   return (
     <div>
