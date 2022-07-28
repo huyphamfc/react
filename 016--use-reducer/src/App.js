@@ -1,37 +1,61 @@
-/*
-- useReducer is similar to the useState
-- use for complex logic
-*/
+import { useState, useReducer, useRef } from 'react';
 
 
-import { useReducer } from 'react';
+const initialData = [];
 
-
-const initialState = 0;
-
-const reducer = (state, action) => {
+const reducer = (data, { action, item, index }) => {
     switch (action) {
-        case 'up': return state + 1;
-        case 'down': return state - 1;
+        case 'add': return [...data, item];
+        case 'remove':
+            data.splice(index, 1);
+            return [...data];
         default: throw new Error('Invalid action');
     }
 }
 
 function App() {
-    const [count, dispatch] = useReducer(reducer, initialState);
+    const [data, dispatch] = useReducer(reducer, initialData);
+
+    const [content, setContent] = useState('');
+
+    const ref = useRef();
 
     return (
         <div>
-            <h1>{count}</h1>
-            <button
-                onClick={() => dispatch('down')}>
-                Down
-            </button>
-            <button
-                onClick={() => dispatch('up')}
-            >
-                Up
-            </button>
+            <h1>Todo Management</h1>
+            <form>
+                <input
+                    ref={ref}
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
+                />
+                <button
+                    onClick={e => {
+                        e.preventDefault();
+                        if (content) {
+                            dispatch({ action: 'add', item: content });
+                            setContent('');
+                            ref.current.focus();
+                        }
+                    }}
+                >
+                    Add
+                </button>
+            </form>
+            <ul>
+                {
+                    data.map((item, index) =>
+                        <li
+                            key={index}
+                            onClick={() =>
+                                dispatch({ action: 'remove', index: index })
+                            }
+                        >
+                            {item}
+                        </li>
+                    )
+                }
+            </ul>
         </div>
     );
 }
