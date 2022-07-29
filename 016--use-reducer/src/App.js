@@ -1,24 +1,56 @@
-import { useState, useReducer, useRef } from 'react';
+import { useReducer, useRef } from 'react';
 
 
-const initialData = [];
+const initialState = {
+    task: '',
+    tasks: []
+}
 
-const reducer = (data, { action, item, index }) => {
-    switch (action) {
-        case 'add': return [...data, item];
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'input': return {
+            task: action.content,
+            tasks: state.tasks
+        }
+        case 'add': return {
+            task: state.task,
+            tasks: [...state.tasks, action.content]
+        }
         case 'remove':
-            data.splice(index, 1);
-            return [...data];
-        default: throw new Error('Invalid action');
+            state.tasks.splice(action.index, 1);
+            return {
+                task: state.task,
+                tasks: [...state.tasks]
+            }
+        default: throw new Error('Invalid Action');
     }
 }
 
 function App() {
-    const [data, dispatch] = useReducer(reducer, initialData);
-
-    const [content, setContent] = useState('');
-
+    const [state, dispatch] = useReducer(reducer, initialState);
     const ref = useRef();
+
+    const inputHandler = e => {
+        dispatch({
+            type: 'input',
+            content: e.target.value
+        });
+    }
+
+    const addHandler = e => {
+        e.preventDefault();
+        if (!state.task) return;
+        dispatch({
+            type: 'add',
+            content: state.task
+        });
+        dispatch({ type: 'input', content: '' });
+        ref.current.focus();
+    }
+
+    const removeHandler = index => {
+        dispatch({ type: 'remove', index });
+    }
 
     return (
         <div>
@@ -26,37 +58,23 @@ function App() {
             <form>
                 <input
                     ref={ref}
-                    value={content}
-                    onChange={e => setContent(e.target.value)}
+                    value={state.task}
+                    onChange={e => inputHandler(e)}
                 />
-                <button
-                    onClick={e => {
-                        e.preventDefault();
-                        if (content) {
-                            dispatch({ action: 'add', item: content });
-                            setContent('');
-                            ref.current.focus();
-                        }
-                    }}
-                >
-                    Add
-                </button>
+                <button onClick={e => addHandler(e)}>Add</button>
             </form>
             <ul>
                 {
-                    data.map((item, index) =>
+                    state.tasks.map((item, index) =>
                         <li
                             key={index}
-                            onClick={() =>
-                                dispatch({ action: 'remove', index: index })
-                            }
+                            onClick={() => removeHandler(index)}
                         >
                             {item}
-                        </li>
-                    )
+                        </li>)
                 }
             </ul>
-        </div>
+        </div >
     );
 }
 
