@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { ThemeContext } from './App';
+import { ThemeContext } from './ThemeContext';
 
 
 function Paragraph() {
-    const theme = useContext(ThemeContext);
+    const theme = useContext(ThemeContext).theme;
 
     return (
         <p className={theme}>
