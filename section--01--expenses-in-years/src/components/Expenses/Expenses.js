@@ -13,10 +13,13 @@ function Expenses({ expensesRecord }) {
     }
 
     const expenses = expensesRecord
-        .filter(obj => obj.date.getFullYear() === filteredYear)
-        .map((obj, index) =>
-            <ExpenseItem key={index}{...obj} />
-        );
+        .filter(obj => obj.date.getFullYear() === filteredYear);
+
+    let expensesContent = <p>No expenses found</p>;
+
+    if (expenses.length > 0)
+        expensesContent = expenses.map((obj, index) =>
+            <ExpenseItem key={index}{...obj} />);
 
     return (
         <Card className='expenses'>
@@ -24,7 +27,7 @@ function Expenses({ expensesRecord }) {
                 selected={filteredYear}
                 onChangeFilter={e => filterChangeHandler(e)}
             />
-            {expenses}
+            {expensesContent}
         </Card>
     );
 }
