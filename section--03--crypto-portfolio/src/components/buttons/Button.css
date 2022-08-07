@@ -1,0 +1,22 @@
+.btn {
+    display: inline-block;
+    font-size: var(--fs-base);
+    padding: var(--padding-button);
+    background-color: var(--color-palette);
+    color: var(--color-very-dark);
+    border: solid transparent 2px;
+    border-radius: var(--border-radius);
+    transition: all 0.5s;
+}
+
+.btn--sub {
+    background-color: var(--color-very-dark);
+    color: var(--color-gray);
+}
+
+.btn:hover {
+    background-color: var(--color-very-dark);
+    color: var(--color-palette);
+    border-color: var(--color-palette);
+    cursor: pointer;
+}

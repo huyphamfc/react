@@ -1,0 +1,17 @@
+.hero {
+    max-width: 120rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+}
+
+@media (max-width:68em) {
+    .hero {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding: 2.4rem;
+    }
+}

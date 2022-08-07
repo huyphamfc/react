@@ -1,0 +1,15 @@
+.hero__heading {
+    font-size: var(--fs-heading);
+    color: var(--color-gray-light);
+    padding: var(--padding-heading);
+    line-height: var(--lh-heading);
+}
+
+.hero__brand {
+    color: var(--color-palette);
+}
+
+.hero__title {
+    font-size: var(--fs-title);
+    padding: var(--padding-title);
+}
