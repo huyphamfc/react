@@ -5,11 +5,14 @@ import './GoalForm.css';
 function GoalForm({
     inputValue,
     inputHandler,
-    addHandler
+    addHandler,
+    isValid
 }) {
+    let formInputClassName = isValid ? '' : ' invalid'
+
     return (
         <form onSubmit={addHandler}>
-            <div className="form-control">
+            <div className={`form-control${formInputClassName}`}>
                 <label>Course Goal</label>
                 <input
                     value={inputValue}

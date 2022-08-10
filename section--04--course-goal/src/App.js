@@ -13,12 +13,17 @@ function App() {
 
   const [inputValue, setInputValue] = useState('');
 
-  const inputHandler = e =>
+  const [isValid, setIsValid] = useState(true);
+
+  const inputHandler = e => {
+    e.target.value ?
+      setIsValid(true) : setIsValid(false);
     setInputValue(e.target.value);
+  }
 
   const addHandler = e => {
     e.preventDefault();
-    if (!inputValue) return;
+    if (!inputValue) return setIsValid(false);
     setList(prevList => {
       prevList.unshift({ text: inputValue });
       return prevList;
@@ -44,6 +49,7 @@ function App() {
           inputValue={inputValue}
           inputHandler={inputHandler}
           addHandler={addHandler}
+          isValid={isValid}
         />
       </section>
       <section className='goals'>
