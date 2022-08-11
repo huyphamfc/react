@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import AddUser from "./components/Users/AddUser";
+import UserList from "./components/Users/UserList";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 inputAgeHandler={inputAgeHandler}
                 addHandler={addHandler}
             />
+            <UserList list={list} />
         </div>
     );
 }
