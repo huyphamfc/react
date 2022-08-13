@@ -1,40 +1,22 @@
-/*
-useRef() is used to store a mutable value of the previous render
-*/
-
-
 import { useState, useRef, useEffect } from "react";
 
 
 function App() {
-  const [count, setCount] = useState(60);
+  const [status, setStatus] = useState('ON');
 
-  const timerID = useRef();
-  const prevCount = useRef();
+  const reRenderingCount = useRef(0);
 
-  useEffect(() => {
-    prevCount.current = count;
-  }, [count]);
+  useEffect(() => { reRenderingCount.current++ });
 
-  const startHandler = () => {
-    timerID.current = setInterval(() => {
-      setCount(prevCount => prevCount - 1);
-    }, 1000);
+  const toggleHandler = () => {
+    setStatus(status === 'ON' ? 'OFF' : 'ON');
   }
 
-  const stopHandler = () => {
-    clearInterval(timerID.current);
-  }
-
-  console.log(prevCount.current, count);
-
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={startHandler}>Start</button>
-      <button onClick={stopHandler}>Stop</button>
-    </div>
-  );
+  return (<>
+    <h1>Status is {status}</h1>
+    <button onClick={toggleHandler}>Toggle</button>
+    <p>UI re-rendered {reRenderingCount.current} time(s).</p>
+  </>);
 }
 
 export default App;
