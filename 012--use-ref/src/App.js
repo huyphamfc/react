@@ -1,20 +1,14 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const previousValue = useRef('not found');
-  // previousValue.current = 'not found'
-
-  useEffect(() => {
-    previousValue.current = count;
-  }, [count]);
+  const ref = useRef();
 
   return (<>
-    <h1>{count}</h1>
-    <button onClick={() => setCount(count + 1)}>+</button>
-    <p>The previous value is {previousValue.current}.</p>
+    <input ref={ref} />
+    <button onClick={() => ref.current.focus()}>
+      Focus Input
+    </button>
   </>);
 }
 
