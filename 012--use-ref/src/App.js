@@ -2,20 +2,19 @@ import { useState, useRef, useEffect } from "react";
 
 
 function App() {
-  const [status, setStatus] = useState('ON');
+  const [count, setCount] = useState(0);
 
-  const reRenderingCount = useRef(0);
+  const previousValue = useRef('not found');
+  // previousValue.current = 'not found'
 
-  useEffect(() => { reRenderingCount.current++ });
-
-  const toggleHandler = () => {
-    setStatus(status === 'ON' ? 'OFF' : 'ON');
-  }
+  useEffect(() => {
+    previousValue.current = count;
+  }, [count]);
 
   return (<>
-    <h1>Status is {status}</h1>
-    <button onClick={toggleHandler}>Toggle</button>
-    <p>UI re-rendered {reRenderingCount.current} time(s).</p>
+    <h1>{count}</h1>
+    <button onClick={() => setCount(count + 1)}>+</button>
+    <p>The previous value is {previousValue.current}.</p>
   </>);
 }
 
