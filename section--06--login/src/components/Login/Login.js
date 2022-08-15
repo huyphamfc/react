@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
@@ -12,22 +12,19 @@ const Login = ({ onLogin }) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
-
+  useEffect(() => {
     setFormIsValid(
-      event.target.value.includes('@') &&
+      enteredEmail.includes('@') &&
       enteredPassword.trim().length > 6
     );
+  }, [enteredEmail, enteredPassword]);
+
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-
-    setFormIsValid(
-      event.target.value.trim().length > 6 &&
-      enteredEmail.includes('@')
-    );
   };
 
   const validateEmailHandler = () => {
@@ -47,7 +44,8 @@ const Login = ({ onLogin }) => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <div className={
-          `${classes.control} ${emailIsValid === false ? classes.invalid : ''}`
+          `${classes.control} ${emailIsValid === false ?
+            classes.invalid : ''}`
         }>
           <label htmlFor="email">E-Mail</label>
           <input
@@ -59,7 +57,8 @@ const Login = ({ onLogin }) => {
           />
         </div>
         <div className={
-          `${classes.control} ${passwordIsValid === false ? classes.invalid : ''}`
+          `${classes.control} ${passwordIsValid === false ?
+            classes.invalid : ''}`
         }>
           <label htmlFor="password">Password</label>
           <input
