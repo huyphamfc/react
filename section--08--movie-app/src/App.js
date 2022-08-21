@@ -30,17 +30,27 @@ function App() {
         setError(null);
 
         try {
-            const res = await fetch('https://swapi.dev/api/films');
+            const res = await fetch('https://movie-app-huypham-default-rtdb.firebaseio.com/movies.json');
 
             if (!res.ok) throw new Error('Something went wrong!');
 
             const data = await res.json();
 
-            const processedData = data.results.map(obj => ({
-                id: obj.episode_id,
+            const processedData = [];
+            for (const key in data) {
+                processedData.push({
+                    id: key,
+                    title: data[key].title,
+                    releaseDate: data[key].releaseDate,
+                    openingText: data[key].openingText
+                });
+            }
+
+            processedData.map(obj => ({
+                id: obj.id,
                 title: obj.title,
-                releaseDate: obj.release_date,
-                openingText: obj.opening_crawl
+                releaseDate: obj.releaseDate,
+                openingText: obj.openingText
             }));
 
             setMovies(processedData);
@@ -51,8 +61,15 @@ function App() {
         setLoading(false);
     }
 
-    const addMovieHandler = movie => {
-        console.log(movie);
+    async function addMovieHandler(movie) {
+        await fetch(
+            'https://movie-app-huypham-default-rtdb.firebaseio.com/movies.json',
+            {
+                method: 'POST',
+                body: JSON.stringify(movie),
+                headers: { 'Content-Type': 'application/json' }
+            }
+        );
     }
 
     return (<>
