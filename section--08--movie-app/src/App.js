@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+import AddMovie from './components/AddMovie';
 import MoviesList from './components/MovieList';
 import './App.css';
 
@@ -50,7 +51,14 @@ function App() {
         setLoading(false);
     }
 
+    const addMovieHandler = movie => {
+        console.log(movie);
+    }
+
     return (<>
+        <section>
+            <AddMovie onAddMovie={addMovieHandler} />
+        </section>
         <section>
             <button onClick={fetchMovieHandler}>
                 Fetch Movies
