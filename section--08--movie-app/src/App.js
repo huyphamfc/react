@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import MoviesList from './components/MovieList';
 import './App.css';
@@ -8,6 +8,10 @@ function App() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetchMovieHandler();
+    }, []);
 
     let content = <p>Not found.</p>;
     if (movies.length > 0) {
