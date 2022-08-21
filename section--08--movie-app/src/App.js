@@ -7,28 +7,43 @@ import './App.css';
 function App() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    let content;
+    let content = <p>Not found.</p>;
+    if (movies.length > 0) {
+        content = <MoviesList movies={movies} />;
+    }
+    if (error) {
+        content = <p>{error}</p>;
+    }
     if (loading) {
         content = <p>Loading...</p>;
-    } else if (!loading && movies.length === 0) {
-        content = <p>Not found.</p>
-    } else {
-        content = <MoviesList movies={movies} />
     }
 
     async function fetchMovieHandler() {
         setLoading(true);
-        const res = await fetch('https://swapi.dev/api/films');
-        const data = await res.json();
-        const processedData = data.results.map(obj => ({
-            id: obj.episode_id,
-            title: obj.title,
-            releaseDate: obj.release_date,
-            openingText: obj.opening_crawl
-        }));
+        setError(null);
+
+        try {
+            const res = await fetch('https://swapi.dev/api/films');
+
+            if (!res.ok) throw new Error('Something went wrong!');
+
+            const data = await res.json();
+
+            const processedData = data.results.map(obj => ({
+                id: obj.episode_id,
+                title: obj.title,
+                releaseDate: obj.release_date,
+                openingText: obj.opening_crawl
+            }));
+
+            setMovies(processedData);
+        } catch (err) {
+            setError(err.message);
+        }
+
         setLoading(false);
-        setMovies(processedData);
     }
 
     return (<>
@@ -37,9 +52,7 @@ function App() {
                 Fetch Movies
             </button>
         </section>
-        <section>
-            {content}
-        </section>
+        <section>{content}</section>
     </>);
 }
 
