@@ -1,7 +1,12 @@
+import ForwardCounter from './components/ForwardCounter';
+import BackwardCounter from './components/BackwardCounter'
+
+
 function App() {
-    return (
-        <h1>Hello, React!</h1>
-    );
+    return (<>
+        <ForwardCounter />
+        <BackwardCounter />
+    </>);
 }
 
 export default App;
