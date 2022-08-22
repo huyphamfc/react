@@ -1,15 +1,10 @@
-import { useState, useEffect } from 'react';
+import useCounter from '../hook/use-counter';
 
 
 function ForwardCounter() {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() =>
-            setCount(prevCount => prevCount + 1),
-            1000);
-        return () => clearInterval(timer);
-    }, []);
+    const count = useCounter(
+        prevCount => prevCount + 1
+    );
 
     return <p>{count}</p>
 }
