@@ -1,0 +1,16 @@
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    list-style: none;
+}
+
+.tasks__message {
+    color: #40c057;
+    text-align: center;
+}
+
+.tasks__error {
+    color: #ff0000;
+    text-align: center;
+}
