@@ -1,0 +1,13 @@
+section {
+    max-width: 64rem;
+    margin: 2.8rem auto;
+    padding: 2.4rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 8px #8ce99a;
+}
+
+@media (max-width: 44em) {
+    section {
+        margin: 2.8rem;
+    }
+}
