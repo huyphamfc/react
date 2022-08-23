@@ -1,7 +1,12 @@
+import TaskForm from './components/TaskForm/TaskForm';
+import Tasks from './components/Tasks/Tasks';
+
+
 function App() {
-    return (
-        <h1>Hello, React!</h1>
-    );
+    return (<>
+        <TaskForm />
+        <Tasks />
+    </>);
 }
 
 export default App;
