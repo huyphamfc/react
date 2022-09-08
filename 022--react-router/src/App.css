@@ -1,0 +1,36 @@
+.container {
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4.8rem;
+}
+
+.nav {
+    max-width: 120rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.6rem;
+}
+
+.nav__navbar {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.home {
+    background-color: #eebefa;
+}
+
+.about {
+    background-color: #a5d8ff;
+}
+
+.products {
+    background-color: #b2f2bb;
+}
