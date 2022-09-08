@@ -1,3 +1,3 @@
 # Rendering Result
 
-![](render-result.png)
+![](./rendering-result.png)
