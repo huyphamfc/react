@@ -1,0 +1,7 @@
+.task__item {
+    font-weight: bold;
+    padding: 1.6rem;
+    background-color: #40c057;
+    color: #fff;
+    border-radius: 0.8rem;
+}
