@@ -1,5 +1,8 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Fragment } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+
+import { DefaultLayout } from './components/Layout';
 import { publicRoutes } from './routes';
 import './App.css';
 
@@ -7,24 +10,26 @@ import './App.css';
 function App() {
     return (
         <BrowserRouter>
-            <header>
-                <nav className='nav'>
-                    <h1><Link to='/'>React Router</Link></h1>
-                    <ul className='nav__navbar'>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/about'>About</Link></li>
-                        <li><Link to='/products'>Products</Link></li>
-                    </ul>
-                </nav>
-            </header>
             <Routes>
-                {publicRoutes.map((route, index) =>
-                    <Route
-                        key={index}
-                        path={route.path}
-                        element={route.component}
-                    />)
-                }
+                {publicRoutes.map((route, index) => {
+                    let Layout = DefaultLayout;
+                    if (route.layout) Layout = route.layout;
+                    if (route.layout === null) Layout = Fragment;
+
+                    const Content = route.component;
+
+                    return (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={
+                                <Layout>
+                                    <Content />
+                                </Layout>
+                            }
+                        />
+                    );
+                })}
             </Routes>
         </BrowserRouter>
     );

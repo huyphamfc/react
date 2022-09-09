@@ -1,6 +1,6 @@
 function Products() {
     return (
-        <div className='container products'>
+        <div className='section products'>
             <p>Products</p>
         </div>
     );

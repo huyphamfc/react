@@ -1,26 +1,51 @@
-.container {
+.section {
+    flex-grow: 1;
     height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 4.8rem;
 }
 
-.nav {
+.header {
+    background-color: #99e9f2;
+}
+
+.header__nav {
     max-width: 120rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    margin: 0 auto;
     padding: 1.6rem;
 }
 
-.nav__navbar {
+.header__navbar {
     display: flex;
-    gap: 0.8rem;
+    gap: 1.6rem;
+
+    font-weight: bold;
+}
+
+.main {
+    max-width: 120rem;
+
+    display: flex;
+    font-size: 4.8rem;
+
+    margin: 0 auto;
+}
+
+.main__sidebar {
+    flex-basis: 28rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e9ecef;
 }
 
 .home {
@@ -33,4 +58,21 @@
 
 .products {
     background-color: #b2f2bb;
+}
+
+.uploads {
+    background-color: #ffd8a8;
+}
+
+.login {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4.8rem;
+
+    background-color: #d0bfff;
 }
