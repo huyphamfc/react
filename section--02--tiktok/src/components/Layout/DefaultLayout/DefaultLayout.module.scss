@@ -1,0 +1,13 @@
+.main {
+  width: var(--layout-width);
+  display: flex;
+  margin: 0 auto;
+}
+
+.main__sidebar {
+  flex-basis: var(--sidebar-width);
+}
+
+.main__content {
+  flex-grow: 1;
+}

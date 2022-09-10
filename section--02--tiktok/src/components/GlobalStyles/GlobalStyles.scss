@@ -1,6 +1,16 @@
 @import "normalize.css";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
+:root {
+  --layout-width: 1150px;
+
+  --header-height: 60px;
+
+  --sidebar-width: 356px;
+
+  --color-palette: #fe2c55;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

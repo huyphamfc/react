@@ -1,0 +1,15 @@
+.header {
+  height: var(--header-height);
+  box-shadow: 0 1px 1px #0000001f;
+}
+
+.header__nav {
+  width: var(--layout-width);
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto;
+}
