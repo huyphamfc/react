@@ -1,0 +1,12 @@
+@use '../../scss/abstracts' as ab;
+
+.header {
+  background-color: ab.$color-palette;
+  color: ab.$color-gray-very-tint;
+
+  padding: 1.6rem 0;
+}
+
+.header__content {
+  @include ab.flex(row, space-between, center);
+}

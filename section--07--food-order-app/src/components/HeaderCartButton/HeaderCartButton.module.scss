@@ -1,0 +1,42 @@
+@use '../../scss/abstracts' as ab;
+
+.button {
+  @include ab.flex(row, center, center, 1.2rem);
+
+  font-weight: bold;
+
+  background-color: ab.$color-bg-btn;
+  color: ab.$color-gray-very-tint;
+
+  padding: ab.$pd-btn-cart;
+
+  border: none;
+  border-radius: 3.2rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ab.$color-bg-btn-hover;
+  }
+
+  &:hover .button__badge {
+    background-color: ab.$color-bg-btn-badge-hover;
+  }
+
+  .button__icon,
+  .button__badge {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  .button__badge {
+    font-size: 2.4rem;
+    font-weight: bold;
+
+    line-height: 3.6rem;
+    text-align: center;
+
+    background-color: ab.$color-bg-btn-badge;
+    border-radius: 50%;
+  }
+}

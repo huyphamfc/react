@@ -1,0 +1,16 @@
+@use '../../scss/abstracts' as ab;
+
+.meals {
+  max-width: 1200px;
+  margin: 3.6rem auto;
+  padding: 3.6rem;
+
+  border-radius: 8px;
+  box-shadow: 0 0 8px ab.$color-palette;
+}
+
+@media (max-width: 75em) {
+  .meals {
+    margin: 3.6rem 2.4rem;
+  }
+}

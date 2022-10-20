@@ -1,0 +1,21 @@
+@use '../../scss/abstracts' as ab;
+
+.meal-item {
+  @include ab.flex(row, space-between, center);
+  padding: 1.6rem 0;
+
+  border-bottom: 1px solid #999;
+
+  .meal-item__info {
+    @include ab.flex(column, flex-start, flex-start, 0.8rem);
+  }
+
+  .meal-item__desc {
+    font-style: italic;
+  }
+
+  .meal-item__price {
+    font-weight: bold;
+    color: ab.$color-accent;
+  }
+}
