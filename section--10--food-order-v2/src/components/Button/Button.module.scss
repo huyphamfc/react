@@ -1,0 +1,24 @@
+@use '../../scss/abstracts' as ab;
+
+.button {
+  padding: 1.2rem 2.4rem;
+
+  border: 2px solid transparent;
+  border-radius: 999px;
+
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.button--solid,
+.button--outline:hover {
+  background-color: ab.$color-palette;
+  color: ab.$color-gray-very-tint;
+}
+
+.button--outline,
+.button--solid:hover {
+  background-color: #fff;
+  color: ab.$color-palette;
+  border-color: ab.$color-palette;
+}
