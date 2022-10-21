@@ -1,5 +1,14 @@
+import { Header, Meals } from './layouts';
+
 function App() {
-  return <h1>Hello, React!</h1>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Meals />
+      </main>
+    </>
+  );
 }
 
 export default App;
