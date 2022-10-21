@@ -1,0 +1,20 @@
+@use '../../scss/abstracts' as ab;
+
+.form {
+  @include ab.flex(column, center, flex-end, 1.6rem);
+
+  .form__label {
+    margin-right: 0.64rem;
+  }
+
+  .form__input {
+    min-width: 5.6rem;
+
+    padding: 0.64rem;
+    border-radius: 4px;
+
+    &:focus {
+      border-color: ab.$color-palette;
+    }
+  }
+}
