@@ -1,0 +1,7 @@
+@use '../../scss/abstracts' as ab;
+
+.item {
+  @include ab.flex(row, space-between, center);
+  padding: 2.4rem 0;
+  border-bottom: 1px solid ab.$color-gray-tint;
+}
