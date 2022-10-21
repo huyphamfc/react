@@ -4,8 +4,9 @@
   box-shadow: 0 0 2px 2px ab.$color-gray-tint;
 
   .header__content {
-    height: 9.2rem;
+    @include ab.container;
     @include ab.flex(row, space-between, center);
+    height: 9.2rem;
   }
 
   .header__brand {
