@@ -1,0 +1,19 @@
+@use '../../scss/abstracts' as ab;
+
+.info {
+  @include ab.flex(column, flex-start, flex-start, 1.6rem);
+
+  .info__title {
+    padding: 0.16rem 0;
+  }
+
+  .info__description {
+    font-style: italic;
+  }
+
+  .info__price {
+    font-size: ab.$fs-price;
+    font-weight: bold;
+    color: ab.$color-palette-shade;
+  }
+}
