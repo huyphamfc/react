@@ -1,13 +1,15 @@
-import { Header, Meals } from './layouts';
+import { GlobalStyles } from './components';
+import { Header, Meals, CartModal } from './layouts';
 
 function App() {
   return (
-    <>
+    <GlobalStyles>
+      <CartModal />
       <Header />
       <main>
         <Meals />
       </main>
-    </>
+    </GlobalStyles>
   );
 }
 

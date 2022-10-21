@@ -1,0 +1,37 @@
+@use '../../scss/abstracts' as ab;
+
+.cart__container {
+  @include ab.flex(row, center, center);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: ab.$color-gray;
+  opacity: 0.8;
+}
+
+.cart__content {
+  @include ab.flex(column, flex-start, stretch, 2.4rem);
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+
+  background-color: ab.$color-gray-very-tint;
+  padding: 3.2rem;
+  border-radius: 8px;
+
+  .cart__items {
+    @include ab.flex(column, flex-start, stretch, 2.4rem);
+  }
+
+  .cart__total {
+    @include ab.flex(row, space-between, center);
+  }
+}

@@ -1,0 +1,42 @@
+@use '../../scss/abstracts' as ab;
+
+.cart-item {
+  min-width: 48rem;
+  border-bottom: 1px solid ab.$color-gray-tint;
+
+  .cart-item__top {
+    @include ab.flex(row, space-between, center);
+  }
+
+  .cart-item__bottom {
+    @include ab.flex(row, flex-start, center, 1.6rem);
+
+    padding: 1.6rem 0;
+  }
+
+  .cart-item__btn {
+    width: 3.2rem;
+    height: 3.2rem;
+
+    font-size: 3.2rem;
+    line-height: 2.8rem;
+
+    background-color: ab.$color-gray-very-tint;
+    color: ab.$color-gray;
+
+    border: 1px solid ab.$color-palette;
+    border-radius: 50%;
+
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ab.$color-palette;
+      color: ab.$color-gray-very-tint;
+    }
+
+    & + .cart-item__btn {
+      margin-left: 0.8rem;
+    }
+  }
+}
