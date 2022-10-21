@@ -1,8 +1,10 @@
 import style from './Button.module.scss';
 
-function Button({ href, type, onClick, children, ...anotherProps }) {
+function Button({ href, size = '', type, onClick, children, ...anotherProps }) {
   let Element = href ? 'a' : 'button';
-  const className = `${style.button} ${style[`button--${type}`]}`;
+  const className = `${style.button} ${style[`button--${type}`]} ${
+    style[`button--${size}`]
+  }`;
 
   return (
     <Element className={className} {...anotherProps}>
